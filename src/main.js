@@ -10,11 +10,10 @@ function clearFields() {
   $('#letterGuess').val("");
 }
 
-function displayDinoWord(dinoWord) {
-  dinoWord.toString().split("");
-  $('#showLetters').text(`${dinoWord}`);
+function displayDinoWord(dinoArray) {
+  $('#showLetters').text(`${dinoArray}`);
+  
 }
-
 function displayErrors(error) {
   $('#showLetters').text(`${error}`);
 }
@@ -28,9 +27,14 @@ $(document).ready(function() {
         if (dinoResponse instanceof Error) {
           throw Error(`Dino API error: ${dinoResponse.message}`);
         }
-        const dinoWord = dinoResponse;
-        displayDinoWord(dinoWord);
-        return DinoIpsum.getIpsum(dinoWord);
+        const dinoWord = dinoResponse.toString().split("");
+        let dinoArray = [];
+        for(let i = 0; i <= dinoWord.length; i++) {
+          dinoArray.push(dinoWord[i]);
+        }
+        console.log(dinoArray);
+        displayDinoWord(dinoArray);
+        return DinoIpsum.getIpsum(dinoArray);
       })
       .catch(function(error) {
         displayErrors(error.message);
