@@ -2,7 +2,7 @@
   display: none;
 } */
 
-.card, .row {
+.card {
   text-align: center;
   border-style: solid;
   border-radius: 20px;
@@ -29,8 +29,14 @@ img {
 }
 
 #letter0, #letter1, #letter2, #letter3, #letter4, #letter5, #letter6, #letter7, #letter8, #letter9, #letter10, #letter11, #letter12, #letter13, #letter14, #letter15 {
-  
-  font-size: 50px;
+  display: none;
+  font-size: 100px;
+  letter-spacing: 10px;
+  text-align: center;
+}
+
+#underscore0, #underscore1, #underscore2, #underscore3, #underscore4, #underscore5, #underscore6, #underscore7, #underscore8, #underscore9, #underscore10, #underscore11, #underscore12, #underscore13, #underscore14, #underscore15 {
+  font-size: 100px;
   letter-spacing: 10px;
   text-align: center;
 }
