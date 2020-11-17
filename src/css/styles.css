@@ -2,7 +2,7 @@
   display: none;
 } */
 
-.card {
+.card, .row {
   text-align: center;
   border-style: solid;
   border-radius: 20px;
@@ -10,6 +10,7 @@
   border-width: 5px;
   padding: 50px;
 }
+
 
 #dinoGame {
   text-align: center;
@@ -27,8 +28,9 @@ img {
   margin-bottom: 30px;
 }
 
-h1 {
-  font-size: 50px;
+#letter0, #letter1, #letter2, #letter3, #letter4, #letter5, #letter6, #letter7, #letter8, #letter9, #letter10, #letter11, #letter12, #letter13, #letter14, #letter15 {
   
+  font-size: 50px;
   letter-spacing: 10px;
+  text-align: center;
 }

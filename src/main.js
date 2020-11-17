@@ -11,7 +11,9 @@ function clearFields() {
 }
 
 function displayDinoWord(dinoArray) {
-  $('#showLetters').text(`${dinoArray}`);
+  for(let j = 0; j <= dinoArray.length; j++) {
+    $(`#letter${j}`).text(dinoArray[j]);
+  }
   
 }
 function displayErrors(error) {
@@ -41,3 +43,5 @@ $(document).ready(function() {
       });
   });
 });
+
+
