@@ -11,25 +11,25 @@ function clearFields() {
 }
 
 function displayDinoWord(dinoArray) {
-  for(let j = 0; j <= dinoArray.length; j++) {
+  for(let j = 0; j <= dinoArray.length -1; j++) {
     $(`#letter${j}`).text(dinoArray[j]);
     $(`#underscore${j}`).text("_ ");
   }
 }
 
-function checkLetter(letter, dinoArray) {
-  let wrong = 0;
-  for(let l = 0; l <= dinoArray.length; l++) {
+function checkLetter(letter, dinoArray, wrong) {
+  for(let l = 0; l <= dinoArray.length -1; l++) {
     if(letter === dinoArray[l]) {
       $(`#letter${l}`).show();
       $(`#underscore${l}`).hide();
-    } else if(is_dinoArray(letter) = false) {
-      console.log(wrong);
-      wrong = wrong + 1
-    } else if(wrong === 8) {
-      alert("OUT OF TURNS");
     }
-  }
+  } 
+  if(dinoArray.includes(letter) === false) {
+    let totalWrong = wrong + 1;
+    console.log(totalWrong);
+  } else if(totalWrong === 8) {
+    alert("OUT OF TURNS");
+    }
 }
 
 function displayErrors(error) {
@@ -40,6 +40,7 @@ function displayErrors(error) {
 $(document).ready(function() {
   let dinoArray = [];
   $('#dinoButton').click(function(event) {
+    let wrong = 0;
     clearFields();
     event.preventDefault();
     DinoIpsum.getIpsum()
@@ -47,8 +48,8 @@ $(document).ready(function() {
         if (dinoResponse instanceof Error) {
           throw Error(`Dino API error: ${dinoResponse.message}`);
         }
-        const dinoWord = dinoResponse.toString().split("");
-        for(let i = 0; i <= dinoWord.length; i++) {
+        const dinoWord = dinoResponse.toString().toLowerCase().split("");
+        for(let i = 0; i <= dinoWord.length - 1; i++) {
           dinoArray.push(dinoWord[i]);
         }
         console.log(dinoArray);
@@ -62,7 +63,7 @@ $(document).ready(function() {
     $('#letterButton').click(function(event) {
       event.preventDefault();
       let letter = $('#letterGuess').val();
-      checkLetter(letter, dinoArray);
+      checkLetter(letter, dinoArray, wrong);
     });
   });
 
